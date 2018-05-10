@@ -1,5 +1,6 @@
 extends ../layouts/default
 
+
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		h2: a(href='/blog/post/' + post.slug)= post.title
@@ -21,6 +22,7 @@ mixin post(post)
 		p!= post.content.brief
 		if post.content.extended
 			p.read-more: a(href='/blog/post/' + post.slug) Read more...
+
 
 block intro
 	.container
