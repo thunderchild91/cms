@@ -5,7 +5,7 @@ block intro
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-		h2: a.mueezay(href='/blog/post/' + post.slug)= post.title
+		h2: a(href='/blog/post/' + post.slug)= post.title
 		p.lead.text-muted Posted 
 			if post.publishedDate
 				| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
@@ -33,13 +33,13 @@ mixin post(post)
 block content
 	.container: .row
 		.col-sm-8.col-md-9
-			h1= data.category ? data.category.name : 'Blog'
+			h1.headerBlog(style='text-align: center;')= data.category ? data.category.name : 'Blog'
 			if filters.category && !data.category
 				h3.text-muted Invalid Category.
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
-						h4.text-weight-normal Showing 
+						h4.pageShowing(style='text-align: center;').text-weight-normal Showing 
 							strong #{data.posts.first}
 							|  to 
 							strong #{data.posts.last}
@@ -73,8 +73,8 @@ block content
 		
 		if data.categories.length
 			.col-sm-4.col-md-3
-				h2 Categories
-				.list-group(style='margin-top: 70px;')
+				//- h2 Categories
+				.list-group(style='margin-top: 20px;')
 					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
 					each cat in data.categories
 						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
