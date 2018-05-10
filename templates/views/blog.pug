@@ -33,7 +33,7 @@ block content
 		.col-sm-8.col-md-9
 			h1.headerBlog(style='text-align: center;')= data.category ? data.category.name : 'Blog'
 			if filters.category && !data.category
-				h3.text-muted Invalid Category.
+				h3.pageShowing(style='text-align: center;').text-muted Invalid Category.
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
@@ -65,9 +65,9 @@ block content
 								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
+						h3.pageShowing(style='text-align: center;').text-muted There are no posts in the category #{data.category.name}.
 					else
-						h3.text-muted There are no posts yet.
+						h3.pageShowing(style='text-align: center;').text-muted There are no posts yet.
 		
 		if data.categories.length
 			.col-sm-4.col-md-3
