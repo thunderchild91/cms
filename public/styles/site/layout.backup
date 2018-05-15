@@ -213,7 +213,7 @@ form .btn:hover, .btn:focus, .btn.focus {
     color: #fff;
     text-decoration: none;
 }
-.imageBackground {
+.mueezay {
     color: #fff; 
     background: #7552bd;
     min-height: 270px !important;
