@@ -6,10 +6,10 @@ block content
 			p: a(href='/blog') &larr; back to the blog
 			hr
 			if !data.post
-				h2 Invalid Post.
+				h2.sepratePostHeader Invalid Post.
 			else
 				header
-					h1= data.post.title
+					h1.sepratePostHeader= data.post.title
 					h5 Posted 
 						if data.post.publishedDate
 							| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
