@@ -1,0 +1,122 @@
+extends ../layouts/default
+
+block intro
+	.container
+		.row: .col-sm-8.col-md-offset-3.col-md-6
+			h1.contactFormHeader Register
+		
+block content
+	.container
+		if enquirySubmitted
+			h3.contactFormHeader Thanks for getting in touch.
+		else
+			.row: .col-sm-8.col-md-offset-3.col-md-6
+				form.post(method='post')
+					input(type='hidden', name='action', value='contact')
+					//- Username
+					.form-group(class=validationErrors.name ? 'has-error' : null)
+						label Username
+						input(type='text', name='name.full', value=formData['name.full']).form-control
+					//- Eamil
+					.form-group(class=validationErrors.email ? 'has-error' : null)
+						label Email
+						input(type='email', name='email', value=formData.email).form-control
+					//- Age
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Age
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='13-17') 13-17
+							option(value='18+') 18+
+							//- each type in ages
+							//- 	option(value=type.value, selected=formData.ages == type.value) type.label
+
+					//- Ageplay Age
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Ageplay Age
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='Months') Months
+							option(value='Years') Years
+					//- Gender
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Gender
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='Female') Female
+							option(value='MtF') MtF
+							option(value='Male') Male
+							option(value='FtM') FtM
+							
+					//- Sexual Orientation
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Sexual Orientation
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='Straight') Straight
+							option(value='Bisexual') Bisexual
+							option(value='Gay') Gay
+							option(value='Lesbian') Lesbian
+							option(value='Pansexual') Pansexual
+							option(value='Asexual') Asexual
+							option(value='Polysexual') Polysexual
+					//- I am a
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Sexual Orientation
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='Incontinence User') Incontinence User
+							option(value='Adult Baby') Adult Baby
+							option(value='BabyFur') BabyFur
+							option(value='DiaperFur') DiaperFur
+							option(value='Diaper Lover') Diaper Lover
+							option(value='Mommy') Mommy
+							option(value='Daddy') Daddy
+							option(value='Domme') Domme
+							option(value='Babysitter') Babysitter
+							option(value='Little') Little
+							option(value='Sissy') Sissy
+					//- My Caregaver is
+					.form-group(class=validationErrors.name ? 'has-error' : null)
+						label Caregiver name
+						input(type='text', name='name.full', value=formData['name.full']).form-control
+					//- My Relationship Status
+					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						label Relationship Status
+						select(name='ages').form-control
+							option(value='') Please select one
+							option(value='Single') Single
+							option(value='Taken') Taken
+							option(value='Engaged') Engaged
+							option(value='Married') Married
+							option(value='Other') Other
+					//- Where I live
+					.form-group(class=validationErrors.name ? 'has-error' : null)
+						label Address
+						input(type='text', name='name.full', value=formData['name.full']).form-control
+					//- My favorite Hobbies
+					//- My favorite Interests
+					//- My favorite Movies
+					//- My favorite books
+					//- My favorite music
+					//- My favorite diapers
+					//- My favorite stuffies
+					//- My favorite pacifiers
+					//- About me
+					.form-group(class=validationErrors.message ? 'has-error' : null)
+						label About me
+						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+					//- .form-group
+					//- 	label Phone
+					//- 	input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
+					//- .form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					//- 	label What are you contacting us about?
+					//- 	select(name='enquiryType').form-control
+					//- 		option(value='') (select one)
+					//- 		each type in enquiryTypes
+					//- 			option(value=type.value, selected=formData.enquiryType == type.value)= type.label
+					//- .form-group(class=validationErrors.message ? 'has-error' : null)
+					//- 	label Message
+					//- 	textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+					.form-actions
+						button(type='submit').btn.btn-cms Send
