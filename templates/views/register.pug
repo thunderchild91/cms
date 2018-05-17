@@ -12,110 +12,115 @@ block content
 		else
 			.row: .col-sm-8.col-md-offset-3.col-md-6
 				form.post(method='post')
-					input(type='hidden', name='action', value='contact')
+					input(type='hidden', name='action', value='register')
 					//- Username
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+					.form-group()
 						label Username
-						input(type='text', name='name.full', value=formData['name.full']).form-control
+						input(type='text', name='name', value=formData['name.first'], required=true).form-control
 					//- Eamil
-					.form-group(class=validationErrors.email ? 'has-error' : null)
+					.form-group()
 						label Email
-						input(type='email', name='email', value=formData.email).form-control
+						input(type='email', name='email', value=formData.email, required=true).form-control
+					//- Pasword
+					.form-group()
+						label Pasword
+						input(type='password', name='password', value=formData.password, required=true).form-control
 					//- Age
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					.form-group()
 						label Age
-						select(name='ages').form-control
+						select(name='ages', required=true).form-control
 							option(value='') Please select one
-							option(value='13-17') 13-17
-							option(value='18+') 18+
-							//- each type in ages
-							//- 	option(value=type.value, selected=formData.ages == type.value) type.label
-
+							each type in ages
+								option(value=type.value, selected=formData.ages == type.value)= type.label
 					//- Ageplay Age
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					.form-group()
 						label Ageplay Age
-						select(name='ages').form-control
+						select(name='ageplay', required=true).form-control
 							option(value='') Please select one
-							option(value='Months') Months
-							option(value='Years') Years
+							each type in ageplay
+								option(value=type.value, selected=formData.ageplay == type.value)= type.label
 					//- Gender
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					.form-group()
 						label Gender
-						select(name='ages').form-control
+						select(name='gender', required=true).form-control
 							option(value='') Please select one
-							option(value='Female') Female
-							option(value='MtF') MtF
-							option(value='Male') Male
-							option(value='FtM') FtM
-							
+							each type in gender
+								option(value=type.value, selected=formData.gender == type.value)= type.label
 					//- Sexual Orientation
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					.form-group()
 						label Sexual Orientation
-						select(name='ages').form-control
+						select(name='sexorientation', required=true).form-control
 							option(value='') Please select one
-							option(value='Straight') Straight
-							option(value='Bisexual') Bisexual
-							option(value='Gay') Gay
-							option(value='Lesbian') Lesbian
-							option(value='Pansexual') Pansexual
-							option(value='Asexual') Asexual
-							option(value='Polysexual') Polysexual
+							each type in sexorientation
+								option(value=type.value, selected=formData.sexorientation == type.value)= type.label
 					//- I am a
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
-						label Sexual Orientation
-						select(name='ages').form-control
+					.form-group()
+						label I am a
+						select(name='yourType', required=true).form-control
 							option(value='') Please select one
-							option(value='Incontinence User') Incontinence User
-							option(value='Adult Baby') Adult Baby
-							option(value='BabyFur') BabyFur
-							option(value='DiaperFur') DiaperFur
-							option(value='Diaper Lover') Diaper Lover
-							option(value='Mommy') Mommy
-							option(value='Daddy') Daddy
-							option(value='Domme') Domme
-							option(value='Babysitter') Babysitter
-							option(value='Little') Little
-							option(value='Sissy') Sissy
+							each type in yourType
+								option(value=type.value, selected=formData.yourType == type.value)= type.label
 					//- My Caregaver is
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+					.form-group()
 						label Caregiver name
-						input(type='text', name='name.full', value=formData['name.full']).form-control
+						input(type='text', name='caregaver', value=formData.caregaver, required=true).form-control
 					//- My Relationship Status
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					.form-group()
 						label Relationship Status
-						select(name='ages').form-control
+						select(name='Rstatus', required=true).form-control
 							option(value='') Please select one
-							option(value='Single') Single
-							option(value='Taken') Taken
-							option(value='Engaged') Engaged
-							option(value='Married') Married
-							option(value='Other') Other
+							each type in Rstatus
+								option(value=type.value, selected=formData.Rstatus == type.value)= type.label
 					//- Where I live
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+					.form-group()
 						label Address
-						input(type='text', name='name.full', value=formData['name.full']).form-control
+						input(type='text', name='address', value=formData.address, required=true).form-control
 					//- My favorite Hobbies
-					//- My favorite Interests
-					//- My favorite Movies
+					.form-group()
+						label Favorite Hobbies
+						textarea(name='hobbies', placeholder='Tell us your favorite hobbies...' rows=4, required=true).form-control= formData.hobbies
+					//- My favorite interests
+					.form-group()
+						label Favorite Interests
+						textarea(name='interests', placeholder='Tell us your favorite interests...' rows=4, required=true).form-control= formData.interests
+					//- My favorite movies
+					.form-group()
+						label Favorite Movies
+						textarea(name='movies', placeholder='Tell us your favorite movies...' rows=4, required=true).form-control= formData.movies
 					//- My favorite books
+					.form-group()
+						label favorite Books
+						textarea(name='books', placeholder='Tell us your favorite books...' rows=4, required=true).form-control= formData.books
 					//- My favorite music
+					.form-group()
+						label Favorite Music
+						textarea(name='music', placeholder='Tell us your favorite music...' rows=4, required=true).form-control= formData.music
 					//- My favorite diapers
+					.form-group()
+						label Favorite Diapers
+						textarea(name='diapers', placeholder='Tell us your favorite diapers...' rows=4, required=true).form-control= formData.diapers
 					//- My favorite stuffies
+					.form-group()
+						label Favorite Stuffies
+						textarea(name='stuffies', placeholder='Tell us your favorite stuffies...' rows=4, required=true).form-control= formData.stuffies
 					//- My favorite pacifiers
+					.form-group()
+						label Favorite Pacifiers
+						textarea(name='pacifiers', placeholder='Tell us your favorite pacifiers...' rows=4, required=true).form-control= formData.pacifiers
 					//- About me
-					.form-group(class=validationErrors.message ? 'has-error' : null)
+					.form-group()
 						label About me
-						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+						textarea(name='message', placeholder='Leave us a message...' rows=4, required=true).form-control= formData.message
 					//- .form-group
 					//- 	label Phone
 					//- 	input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
-					//- .form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+					//- .form-group()
 					//- 	label What are you contacting us about?
 					//- 	select(name='enquiryType').form-control
 					//- 		option(value='') (select one)
 					//- 		each type in enquiryTypes
 					//- 			option(value=type.value, selected=formData.enquiryType == type.value)= type.label
-					//- .form-group(class=validationErrors.message ? 'has-error' : null)
+					//- .form-group()
 					//- 	label Message
 					//- 	textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
 					.form-actions
