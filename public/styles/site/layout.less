@@ -18,7 +18,8 @@
 .section-background-image {
 	background-image: url("../../images/ABDLcirclebanner.jpg");
 	background-size: cover;
-	height: 480px;
+    height: 480px;
+    background-repeat: no-repeat;
 }
 
 .nopadding {
@@ -264,5 +265,9 @@ img {
 * {
     box-sizing: border-box;
     border-radius: 10px;
+}
+.required:after { 
+    content: ' *';
+    color: red;
 }
 

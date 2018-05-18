@@ -15,19 +15,19 @@ block content
 					input(type='hidden', name='action', value='register')
 					//- Username
 					.form-group()
-						label Username
+						label.required Username
 						input(type='text', name='name', value=formData['name.first'], required=true).form-control
 					//- Eamil
 					.form-group()
-						label Email
+						label.required Email
 						input(type='email', name='email', value=formData.email, required=true).form-control
 					//- Pasword
 					.form-group()
-						label Pasword
+						label.required Pasword
 						input(type='password', name='password', value=formData.password, required=true).form-control
 					//- Age
 					.form-group()
-						label Age
+						label.required Age
 						select(name='ages', required=true).form-control
 							option(value='') Please select one
 							each type in ages
@@ -35,13 +35,13 @@ block content
 					//- Ageplay Age
 					.form-group()
 						label Ageplay Age
-						select(name='ageplay', required=true).form-control
+						select(name='ageplay').form-control
 							option(value='') Please select one
 							each type in ageplay
 								option(value=type.value, selected=formData.ageplay == type.value)= type.label
 					//- Gender
 					.form-group()
-						label Gender
+						label.required Gender
 						select(name='gender', required=true).form-control
 							option(value='') Please select one
 							each type in gender
@@ -49,79 +49,66 @@ block content
 					//- Sexual Orientation
 					.form-group()
 						label Sexual Orientation
-						select(name='sexorientation', required=true).form-control
+						select(name='sexorientation').form-control
 							option(value='') Please select one
 							each type in sexorientation
 								option(value=type.value, selected=formData.sexorientation == type.value)= type.label
 					//- I am a
 					.form-group()
 						label I am a
-						select(name='yourType', required=true).form-control
+						select(id="yourType" name="yourType[]" multiple="multiple").form-control
 							option(value='') Please select one
 							each type in yourType
 								option(value=type.value, selected=formData.yourType == type.value)= type.label
 					//- My Caregaver is
 					.form-group()
 						label Caregiver name
-						input(type='text', name='caregaver', value=formData.caregaver, required=true).form-control
+						input(type='text', name='caregaver', value=formData.caregaver).form-control
 					//- My Relationship Status
 					.form-group()
 						label Relationship Status
-						select(name='Rstatus', required=true).form-control
+						select(name='Rstatus').form-control
 							option(value='') Please select one
 							each type in Rstatus
 								option(value=type.value, selected=formData.Rstatus == type.value)= type.label
-					//- Where I live
+					//- Time Zone
 					.form-group()
-						label Address
-						input(type='text', name='address', value=formData.address, required=true).form-control
+						label Time Zone
+						select(name='timeZone').form-control
+							option(value='') Please select one
+							each type in timeZone
+								option(value=type.value, selected=formData.timeZone == type.value)= type.label
 					//- My favorite Hobbies
 					.form-group()
-						label Favorite Hobbies
-						textarea(name='hobbies', placeholder='Tell us your favorite hobbies...' rows=4, required=true).form-control= formData.hobbies
-					//- My favorite interests
-					.form-group()
-						label Favorite Interests
-						textarea(name='interests', placeholder='Tell us your favorite interests...' rows=4, required=true).form-control= formData.interests
+						label Favorite Hobbies/Interests
+						textarea(name='hobbies', placeholder='Tell us your favorite hobbies/interests...' rows=4).form-control= formData.hobbies
 					//- My favorite movies
 					.form-group()
 						label Favorite Movies
-						textarea(name='movies', placeholder='Tell us your favorite movies...' rows=4, required=true).form-control= formData.movies
+						textarea(name='movies', placeholder='Tell us your favorite movies...' rows=4).form-control= formData.movies
 					//- My favorite books
 					.form-group()
-						label favorite Books
-						textarea(name='books', placeholder='Tell us your favorite books...' rows=4, required=true).form-control= formData.books
+						label Favorite Books
+						textarea(name='books', placeholder='Tell us your favorite books...' rows=4).form-control= formData.books
 					//- My favorite music
 					.form-group()
 						label Favorite Music
-						textarea(name='music', placeholder='Tell us your favorite music...' rows=4, required=true).form-control= formData.music
+						textarea(name='music', placeholder='Tell us your favorite music...' rows=4).form-control= formData.music
 					//- My favorite diapers
 					.form-group()
 						label Favorite Diapers
-						textarea(name='diapers', placeholder='Tell us your favorite diapers...' rows=4, required=true).form-control= formData.diapers
+						textarea(name='diapers', placeholder='Tell us your favorite diapers...' rows=4).form-control= formData.diapers
 					//- My favorite stuffies
 					.form-group()
 						label Favorite Stuffies
-						textarea(name='stuffies', placeholder='Tell us your favorite stuffies...' rows=4, required=true).form-control= formData.stuffies
+						textarea(name='stuffies', placeholder='Tell us your favorite stuffies...' rows=4).form-control= formData.stuffies
 					//- My favorite pacifiers
 					.form-group()
 						label Favorite Pacifiers
-						textarea(name='pacifiers', placeholder='Tell us your favorite pacifiers...' rows=4, required=true).form-control= formData.pacifiers
+						textarea(name='pacifiers', placeholder='Tell us your favorite pacifiers...' rows=4).form-control= formData.pacifiers
 					//- About me
 					.form-group()
 						label About me
-						textarea(name='message', placeholder='Leave us a message...' rows=4, required=true).form-control= formData.message
-					//- .form-group
-					//- 	label Phone
-					//- 	input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
-					//- .form-group()
-					//- 	label What are you contacting us about?
-					//- 	select(name='enquiryType').form-control
-					//- 		option(value='') (select one)
-					//- 		each type in enquiryTypes
-					//- 			option(value=type.value, selected=formData.enquiryType == type.value)= type.label
-					//- .form-group()
-					//- 	label Message
-					//- 	textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
 					.form-actions
 						button(type='submit').btn.btn-cms Send
