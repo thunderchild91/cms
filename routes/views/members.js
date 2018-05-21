@@ -13,16 +13,18 @@ exports = module.exports = function (req, res) {
 	locals.data = {
 		posts: [],
 	};
+	// locals.posts = [];
     User = keystone.list('User');
- 
-	User.model.find()
-		.sort('_id')
-		.limit(5)
-		.exec(function(err, posts) {
-			// do something with posts
-			console.log(posts)
-		});
-	console.log(locals.data.posts);
+	view.on('init', function (next) {
+		User.model.find()
+			.sort('_id')
+			.exec(function(err, posts) {
+				// do something with posts
+				locals.data.posts = posts;
+				// locals.data.posts.push(posts);
+				next(err);
+			});
+	});
 
 	view.render('members');
 };

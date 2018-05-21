@@ -79,13 +79,13 @@ exports = module.exports = function (req, res) {
 	// 		console.log(posts)
 	// 	});
 	// console.log(locals.data.posts);
-
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'register' }, function (next) {
 		var User = keystone.list('User').model;
 		var user = new User({
             name: {
-                first: locals.formData.first
+				first: locals.formData.name,
+				last: ''
 			},
 			email: locals.formData.email,
 			password: locals.formData.password,
@@ -113,7 +113,7 @@ exports = module.exports = function (req, res) {
 			}
 		
 			// user has been saved
-			console.log(user);
+			// console.log(user);
 			res.redirect('/keystone/signin');
 		});
        

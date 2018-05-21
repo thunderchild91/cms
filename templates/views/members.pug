@@ -2,8 +2,26 @@ extends ../layouts/default
 
 block intro
 	.container-fluid.nopadding: .section.section-background-image
+	//- .container-fluid.nopadding
+
+mixin printUser(post)
+	td= post.name.first +' '+post.name.last
+	td= post.email
+
 
 block content
 	.container: .row
 		.col-sm-8.col-md-9
-			h1 In Progress.
+			if user
+				h2.sepratePostHeader Members
+				table.table.table-bordered.post.tableStyle
+					thead
+						tr
+							th Name
+							th Email
+					tbody
+					each post in data.posts
+						tr
+						+printUser(post)
+			else
+				h2.sepratePostHeader You Need to Login First.
