@@ -65,6 +65,8 @@ html
 							if user
 								if user.canAccessKeystone
 									li: a(href='/keystone') Open Keystone
+								each link in loggedinLinks
+									li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 								li: a(href='/keystone/signout') Sign Out
 							else
 								li: a(href='/keystone/signin') Sign In

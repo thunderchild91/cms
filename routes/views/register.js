@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
 	locals.sexorientation = Useer.fields.sexorientation.ops;
 	// locals.yourType = Useer.fields.yourType.ops;
 	locals.Rstatus = Useer.fields.Rstatus.ops;
-	locals.timeZone = Useer.fields.timeZone.ops
+	locals.timeZone = Useer.fields.timeZone.ops;
 
 	// locals.ages = [
 	// 	{value: '13-17', label: '13-17'},
@@ -79,6 +79,7 @@ exports = module.exports = function (req, res) {
 	// 		console.log(posts)
 	// 	});
 	// console.log(locals.data.posts);
+	// console.log("MOVIES", locals.formData.movies);
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'register' }, function (next) {
 		var User = keystone.list('User').model;
@@ -96,6 +97,7 @@ exports = module.exports = function (req, res) {
 			yourType: locals.formData.yourType,
 			caregaver: locals.formData.caregaver,
 			Rstatus: locals.formData.Rstatus,
+			timeZone: locals.formData.timeZone,
 			hobbies: locals.formData.hobbies,
 			movies: locals.formData.movies,
 			books: locals.formData.books,
