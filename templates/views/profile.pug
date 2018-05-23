@@ -17,7 +17,11 @@ block content
 						//- Username
 						.form-group()
 							label Username
-							input(type='text', name='name', value=user.name.first, required=true).form-control
+							input(type='text', name='name', value=user.name.first, required=true, disabled).form-control
+						//- Username
+						.form-group()
+							label Email
+							input(type='email', name='email', value=user.email, required=true, disabled).form-control
 						//- Pasword
 						.form-group()
 							label Pasword
@@ -30,12 +34,26 @@ block content
 								each type in ages
 									option(value=type.value, selected=user.ages == type.value)= type.label
 						//- Ageplay Age
+						//- .form-group()
+						//- 	label Ageplay Age
+						//- 	select(name='ageplay').form-control
+						//- 		option(value='') Please select one
+						//- 		each type in ageplay
+						//- 			option(value=type.value, selected=user.ageplay == type.value)= type.label
+						//- Ageplay Month
 						.form-group()
-							label Ageplay Age
-							select(name='ageplay').form-control
+							label Ageplay Month
+							select(name='ageplayMonth').form-control
 								option(value='') Please select one
-								each type in ageplay
-									option(value=type.value, selected=user.ageplay == type.value)= type.label
+								each type in ageplayMonth
+									option(value=type.value, selected=user.ageplayMonth == type.value)= type.label
+						//- Ageplay Year
+						.form-group()
+							label Ageplay Year
+							select(name='ageplayYear').form-control
+								option(value='') Please select one
+								each type in ageplayYear
+									option(value=type.value, selected=user.ageplayYear == type.value)= type.label
 						//- Gender
 						.form-group()
 							label Gender

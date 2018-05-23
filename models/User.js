@@ -13,15 +13,47 @@ User.add({
 		{value: '13-17', label: '13-17'},
 		{value: '18+', label: '18+'}
 	], initial: true, required: true },
-	ageplay: { type: Types.Select, options: [
-		{value: 'Months', label: 'Months'},
-		{value: 'Years', label: 'Years'}
+	// ageplay: { type: Types.Select, options: [
+	// 	{value: 'Months', label: 'Months'},
+	// 	{value: 'Years', label: 'Years'}
+	// ] },
+	ageplayMonth: { type: Types.Select, options: [
+		{value: '0', label: '0'},
+		{value: '1', label: '1'},
+		{value: '2', label: '2'},
+		{value: '3', label: '3'},
+		{value: '4', label: '4'},
+		{value: '5', label: '5'},
+		{value: '6', label: '6'},
+		{value: '7', label: '7'},
+		{value: '8', label: '8'},
+		{value: '9', label: '9'},
+		{value: '10', label: '10'},
+		{value: '11', label: '11'},
+		{value: '12', label: '12'}
+	] },
+	ageplayYear: { type: Types.Select, options: [
+		{value: '0', label: '0'},
+		{value: '1', label: '1'},
+		{value: '2', label: '2'},
+		{value: '3', label: '3'},
+		{value: '4', label: '4'},
+		{value: '5', label: '5'},
+		{value: '6', label: '6'},
+		{value: '7', label: '7'},
+		{value: '8', label: '8'},
+		{value: '9', label: '9'},
+		{value: '10', label: '10'},
+		{value: '11', label: '11'},
+		{value: '12', label: '12'}
 	] },
 	gender: { type: Types.Select, options: [
 		{value: 'Female', label: 'Female'},
 		{value: 'MtF', label: 'MtF'},
 		{value: 'Male', label: 'Male'},
 		{value: 'FtM', label: 'FtM'},
+		{value: 'BiGender', label: 'BiGender'},
+		{value: 'GenderFluid', label: 'GenderFluid'},
 	], initial: true, required: true },
 	sexorientation: { type: Types.Select, options: [
 		{value: 'Straight', label: 'Straight'},

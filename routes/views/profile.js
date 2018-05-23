@@ -11,11 +11,13 @@ exports = module.exports = function (req, res) {
 	// Set locals
 	locals.section = 'profile';
 	locals.ages = Useer.fields.ages.ops;
-	locals.ageplay = Useer.fields.ageplay.ops;
+	// locals.ageplay = Useer.fields.ageplay.ops;
 	locals.gender = Useer.fields.gender.ops;
 	locals.sexorientation = Useer.fields.sexorientation.ops;
 	locals.Rstatus = Useer.fields.Rstatus.ops;
 	locals.timeZone = Useer.fields.timeZone.ops;
+	locals.ageplayMonth = Useer.fields.ageplayMonth.ops;
+	locals.ageplayYear = Useer.fields.ageplayYear.ops;
 	locals.yourType = [
 		{value: 'Incontinence User', label: 'Incontinence User'},
 		{value: 'Adult Baby', label: 'Adult Baby'},

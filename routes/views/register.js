@@ -15,7 +15,9 @@ exports = module.exports = function (req, res) {
 	locals.enquirySubmitted = false;
 
 	locals.ages = Useer.fields.ages.ops;
-	locals.ageplay = Useer.fields.ageplay.ops;
+	// locals.ageplay = Useer.fields.ageplay.ops;
+	locals.ageplayMonth = Useer.fields.ageplayMonth.ops;
+	locals.ageplayYear = Useer.fields.ageplayYear.ops;
 	locals.gender = Useer.fields.gender.ops;
 	locals.sexorientation = Useer.fields.sexorientation.ops;
 	// locals.yourType = Useer.fields.yourType.ops;
@@ -91,7 +93,9 @@ exports = module.exports = function (req, res) {
 			email: locals.formData.email,
 			password: locals.formData.password,
 			ages: locals.formData.ages,
-			ageplay: locals.formData.ageplay,
+			// ageplay: locals.formData.ageplay,
+			ageplayMonth: locals.formData.ageplayMonth,
+			ageplayYear: locals.formData.ageplayYear,
 			gender: locals.formData.gender,
 			sexorientation: locals.formData.sexorientation,
 			yourType: locals.formData.yourType,

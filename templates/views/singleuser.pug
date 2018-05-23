@@ -1,0 +1,84 @@
+extends ../layouts/default
+
+block content
+	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2 
+		article
+			p: a(href='/members') &larr; back to the members
+			hr
+			if !data.post
+				h2.sepratePostHeader Invalid User.
+			else
+				//- p=data.post
+				div.post
+					if data.post.name
+						.form-group()
+							label Name:
+							|	#{data.post.name.first} #{data.post.name.last}
+					if data.post.email
+						.form-group()
+							label Email:
+							|	#{data.post.email}
+					if data.post.ages
+						.form-group()
+							label Ages:
+							|	#{data.post.ages}					
+					if data.post.ageplayMonth && data.post.ageplayYear
+						.form-group()
+							label Ageplay:
+							|	#{data.post.ageplayMonth} Month(s) #{data.post.ageplayYear} Year(s)
+					if data.post.gender
+						.form-group()
+							label Gender:
+							|	#{data.post.gender}					
+					if data.post.sexorientation
+						.form-group()
+							label Sexual Orientation:
+							|	#{data.post.sexorientation}	
+					if data.post.yourType.length
+						.form-group()
+							label Type:
+							|	#{data.post.yourType}						
+					if data.post.caregaver
+						.form-group()
+							label Caregiver Name:
+							|	#{data.post.caregaver}	
+					if data.post.Rstatus
+						.form-group()
+							label Relationship Status:
+							|	#{data.post.Rstatus}	
+					if data.post.timeZone
+						.form-group()
+							label Time Zone:
+							|	#{data.post.timeZone}
+					if data.post.hobbies
+						.form-group()
+							label Favourite Hobbies/Intrests:
+							|	#{data.post.hobbies}
+					if data.post.movies
+						.form-group()
+							label Favourite Movies:
+							|	#{data.post.movies}
+					if data.post.books
+						.form-group()
+							label Favourite Books:
+							|	#{data.post.books}
+					if data.post.music
+						.form-group()
+							label Favourite Music:
+							|	#{data.post.music}
+					if data.post.diapers
+						.form-group()
+							label Favourite Diapers:
+							|	#{data.post.diapers}
+					if data.post.stuffies
+						.form-group()
+							label Favourite Stuffies:
+							|	#{data.post.stuffies}
+					if data.post.pacifiers
+						.form-group()
+							label Favourite Pacifiers:
+							|	#{data.post.Rstatus}
+					if data.post.message
+						.form-group()
+							label About:
+							|	#{data.post.message}
