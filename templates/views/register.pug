@@ -1,6 +1,7 @@
 extends ../layouts/default
 
 block intro
+	.container-fluid.nopadding: .section.section-background-image
 	.container
 		.row: .col-sm-8.col-md-offset-3.col-md-6
 			h1.contactFormHeader Register
@@ -17,61 +18,54 @@ block content
 					.form-group()
 						label.required Username
 						input(type='text', name='name', value=formData['name.first'], required=true).form-control
-					//- Eamil
+					//- Email
 					.form-group()
 						label.required Email
 						input(type='email', name='email', value=formData.email, required=true).form-control
-					//- Pasword
+					//- Password
 					.form-group()
-						label.required Pasword
+						label.required Password
 						input(type='password', name='password', value=formData.password, required=true).form-control
 					//- Age
 					.form-group()
 						label.required Age
 						select(name='ages', required=true).form-control
-							option(value='') Please select one
+							option(value='') Please select your legal age
 							each type in ages
 								option(value=type.value, selected=formData.ages == type.value)= type.label
-					//- Ageplay Age
-					//- .form-group()
-					//- 	label Ageplay Age
-					//- 	select(name='ageplay').form-control
-					//- 		option(value='') Please select one
-					//- 		each type in ageplay
-					//- 			option(value=type.value, selected=formData.ageplay == type.value)= type.label
 					//- Ageplay Month
 					.form-group()
 						label Ageplay Month
 						select(name='ageplayMonth').form-control
-							option(value='') Please select one
+							option(value='') Please select your ageplay month
 							each type in ageplayMonth
 								option(value=type.value, selected=formData.ageplayMonth == type.value)= type.label
 					//- Ageplay Year
 					.form-group()
 						label Ageplay Year
 						select(name='ageplayYear').form-control
-							option(value='') Please select one
+							option(value='') Please select your ageplay year
 							each type in ageplayYear
 								option(value=type.value, selected=formData.ageplayYear == type.value)= type.label
 					//- Gender
 					.form-group()
 						label.required Gender
 						select(name='gender', required=true).form-control
-							option(value='') Please select one
+							option(value='') Please select your gender
 							each type in gender
 								option(value=type.value, selected=formData.gender == type.value)= type.label
 					//- Sexual Orientation
 					.form-group()
 						label Sexual Orientation
 						select(name='sexorientation').form-control
-							option(value='') Please select one
+							option(value='') Please select your sexual orientation
 							each type in sexorientation
 								option(value=type.value, selected=formData.sexorientation == type.value)= type.label
 					//- I am a
 					.form-group()
 						label I am a
 						select(id="yourType" name="yourType[]" multiple="multiple").form-control
-							option(value='') Select all that apply
+							option(value='') Please select all that apply to you
 							each type in yourType
 								option(value=type.value, selected=formData.yourType == type.value)= type.label
 					//- My Caregaver is
@@ -82,14 +76,14 @@ block content
 					.form-group()
 						label Relationship Status
 						select(name='Rstatus').form-control
-							option(value='') Please select one
+							option(value='') Please select your relationship status
 							each type in Rstatus
 								option(value=type.value, selected=formData.Rstatus == type.value)= type.label
 					//- Time Zone
 					.form-group()
 						label Time Zone
 						select(name='timeZone').form-control
-							option(value='') Please select one
+							option(value='') Please select your time zone
 							each type in timeZone
 								option(value=type.value, selected=formData.timeZone == type.value)= type.label
 					//- My favorite Hobbies
@@ -123,6 +117,6 @@ block content
 					//- About me
 					.form-group()
 						label About me
-						textarea(name='message', placeholder='Tesll us something about yourself, we will be pleased to hear from you...' rows=4).form-control= formData.message
+						textarea(name='message', placeholder='Tell us something about yourself, we will be pleased to hear from you...' rows=4).form-control= formData.message
 					.form-actions
-						button(type='submit').btn.btn-cms Send
+						button(type='submit').btn.btn-cms Register
