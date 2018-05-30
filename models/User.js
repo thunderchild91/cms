@@ -4,9 +4,11 @@ var Types = keystone.Field.Types;
  * User Model
  * ==========
  */
+
 var User = new keystone.List('User');
+
 User.add({
-	name: { type: Types.Name, required: true, index: true },
+	name: { type: Types.Name, initial: true, required: true, unique: true },
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
 	ages: { type: Types.Select, options: [
@@ -135,7 +137,22 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
-
+User.schema.pre('save', function (next){
+	var userName = {first: this.name.first, last: ''};
+	User.model.find({name: userName}, function (err, item) {
+		if (err) {
+			next(err);
+		}
+		if (item.length !== 0) {
+			// console.log(item);
+			var err = new Error('User name already exist');
+			next(err);
+		}
+		else {
+			next();
+		}
+	})
+})
 /**
  * Relationships
  */

@@ -24,30 +24,7 @@ exports = module.exports = function (req, res) {
 	locals.Rstatus = Useer.fields.Rstatus.ops;
 	locals.timeZone = Useer.fields.timeZone.ops;
 
-	// locals.ages = [
-	// 	{value: '13-17', label: '13-17'},
-	// 	{value: '18+', label: '18+'}
-	// ];
 	
-	// locals.ageplay = [
-	// 	{value: 'Months', label: 'Months'},
-	// 	{value: 'Years', label: 'Years'}
-	// ];
-	// locals.gender = [
-	// 	{value: 'Female', label: 'Female'},
-	// 	{value: 'MtF', label: 'MtF'},
-	// 	{value: 'Male', label: 'Male'},
-	// 	{value: 'FtM', label: 'FtM'},
-	// ];
-	// locals.sexorientation = [
-	// 	{value: 'Straight', label: 'Straight'},
-	// 	{value: 'Bisexual', label: 'Bisexual'},
-	// 	{value: 'Gay', label: 'Gay'},
-	// 	{value: 'Lesbian', label: 'Lesbian'},
-	// 	{value: 'Pansexual', label: 'Pansexual'},
-	// 	{value: 'Asexual', label: 'Asexual'},
-	// 	{value: 'Polysexual', label: 'Polysexual'},
-	// ];
 	locals.yourType = [
 		{value: 'Incontinence User', label: 'Incontinence User'},
 		{value: 'Adult Baby', label: 'Adult Baby'},
@@ -61,30 +38,15 @@ exports = module.exports = function (req, res) {
 		{value: 'Little', label: 'Little'},
 		{value: 'Sissy', label: 'Sissy'},
 	];
-	// locals.Rstatus = [
-	// 	{value: 'Single', label: 'Single'},
-	// 	{value: 'Taken', label: 'Taken'},
-	// 	{value: 'Engaged', label: 'Engaged'},
-	// 	{value: 'Married', label: 'Married'},
-	// 	{value: 'Other', label: 'Other'},
-	// ];
-	// locals.data = {
-	// 	posts: [],
-	// };
-    // User = keystone.list('User');
- 
-	// User.model.find()
-	// 	.sort('_id')
-	// 	.limit(5)
-	// 	.exec(function(err, posts) {
-	// 		// do something with posts
-	// 		console.log(posts)
-	// 	});
-	// console.log(locals.data.posts);
-	// console.log("MOVIES", locals.formData.movies);
-	// On POST requests, add the Enquiry item to the database
+	
+	locals.errorMsg = [];
 	view.on('post', { action: 'register' }, function (next) {
 		var User = keystone.list('User').model;
+		// var userName = {first: locals.formData.name, last: ''};
+		// User.find({name: userName}, function (err, item) {
+		// 	console.log("item", item);
+		// 	console.log("err", err);
+		// });
 		var user = new User({
             name: {
 				first: locals.formData.name,
@@ -115,12 +77,17 @@ exports = module.exports = function (req, res) {
 		user.save(function (err) {
 			if (err) {
 				// handle error
-				locals.validationErrors = err.errors;
+				// if (err.code == 11000) {
+				// 	locals.errorMsg.push("Email already exist!");
+				// 	res.render('register', locals.errorMsg);
+				// }
+				locals.errorMsg.push("User/Email already exist!");
+				// locals.errorMsg.push(" already exist!");
+				res.render('register', locals.errorMsg);		
 			}
-		
-			// user has been saved
-			// console.log(user);
-			res.redirect('/keystone/signin');
+			else {
+				res.redirect('/keystone/signin');
+			}
 		});
        
 	});

@@ -41,7 +41,7 @@ keystone.set('locals', {
 
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
-
+keystone.set('signin redirect', '/');
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
@@ -52,6 +52,5 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
-
 
 keystone.start();
