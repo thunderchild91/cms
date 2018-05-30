@@ -1,6 +1,7 @@
 extends ../layouts/default
 
 block content
+	.container-fluid.nopadding: .section.section-background-image
 	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2 
 		article
 			p: a(href='/members') &larr; back to the members
@@ -14,10 +15,6 @@ block content
 						.form-group()
 							label Name:
 							|	#{data.post.name.first} #{data.post.name.last}
-					if data.post.email
-						.form-group()
-							label Email:
-							|	#{data.post.email}
 					if data.post.ages
 						.form-group()
 							label Ages:
@@ -36,7 +33,7 @@ block content
 							|	#{data.post.sexorientation}	
 					if data.post.yourType.length
 						.form-group()
-							label Type:
+							label I am a:
 							|	#{data.post.yourType}						
 					if data.post.caregaver
 						.form-group()
@@ -52,33 +49,33 @@ block content
 							|	#{data.post.timeZone}
 					if data.post.hobbies
 						.form-group()
-							label Favourite Hobbies/Intrests:
+							label Favorite Hobbies/Intrests:
 							|	#{data.post.hobbies}
 					if data.post.movies
 						.form-group()
-							label Favourite Movies:
+							label Favorite Movies:
 							|	#{data.post.movies}
 					if data.post.books
 						.form-group()
-							label Favourite Books:
+							label Favorite Books:
 							|	#{data.post.books}
 					if data.post.music
 						.form-group()
-							label Favourite Music:
+							label Favorite Music:
 							|	#{data.post.music}
 					if data.post.diapers
 						.form-group()
-							label Favourite Diapers:
+							label Favorite Diapers:
 							|	#{data.post.diapers}
 					if data.post.stuffies
 						.form-group()
-							label Favourite Stuffies:
+							label Favorite Stuffies:
 							|	#{data.post.stuffies}
 					if data.post.pacifiers
 						.form-group()
-							label Favourite Pacifiers:
+							label Favorite Pacifiers:
 							|	#{data.post.Rstatus}
 					if data.post.message
 						.form-group()
-							label About:
+							label About Me:
 							|	#{data.post.message}
