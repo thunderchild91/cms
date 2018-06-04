@@ -20,6 +20,10 @@ block content
 				.form-group()
 					label.required Username
 					input(type='text', name='name', value=formData['name.first'], required=true).form-control
+				//- File Upload
+				//- .form-group()
+				//- 	label.required Upload Image
+				//- 	input(type='file', name='file', value=formData.file_upload, id='file_upload', required=true).form-control
 				//- Eamil
 				.form-group(class=validationErrors.email ? 'has-error' : null)
 					label.required Email
