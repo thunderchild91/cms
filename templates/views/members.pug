@@ -2,14 +2,28 @@ extends ../layouts/default
 
 block intro
 	.container-fluid.nopadding: .section.section-background-image
-		img(src="../images/banner-incont.jpg", alt="Please Refresh")
+		img.siteBanner(src="/images/banner-incont.jpg", alt="Please Refresh")
 	//- .container-fluid.nopadding
 
 mixin printUser(post)
 	if post.name.last!== undefined
-		td: a(href='/blog/singleuser/' + post._id)=post.name.first +' '+post.name.last
+		if post.image !== undefined
+			td: img(src="/uploads/files/" + user.image, alt="User Image", style="width: 45px;")
+			td
+				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
+		else
+			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
+			td
+				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
 	else
-		td: a(href='/blog/singleuser/' + post._id)=post.name.first
+		if post.image !== undefined
+			td: img(src="/uploads/files/" + user.image, alt="User Image", style="width: 45px;")
+			td
+				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
+		else
+			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
+			td
+				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
 	//- td= post.email
 
 
@@ -21,8 +35,8 @@ block content
 				table.table.table-bordered.post.tableStyle
 					thead
 						tr
+							th(style="width: 65px") 
 							th Name
-							//- th Email
 					tbody
 					each post in data.posts
 						tr

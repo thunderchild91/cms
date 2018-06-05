@@ -2,13 +2,13 @@ extends ../layouts/default
 
 block intro
 	.container-fluid.nopadding: .section.section-background-image
-		img(src="../images/banner-incont.jpg", alt="Please Refresh")
+		img.siteBanner(src="/images/banner-incont.jpg", alt="Please Refresh")
 		
 block content
 	.container
 		.row: .col-sm-8.col-md-offset-3.col-md-6
 			h1.contactFormHeader Register
-			form.post(method='post')
+			form.post(method='post',  enctype='multipart/form-data')
 				input(type='hidden', name='action', value='register')
 				if (errorMsg.length !== 0)
 					div.alert.alert-danger
@@ -21,9 +21,9 @@ block content
 					label.required Username
 					input(type='text', name='name', value=formData['name.first'], required=true).form-control
 				//- File Upload
-				//- .form-group()
-				//- 	label.required Upload Image
-				//- 	input(type='file', name='file', value=formData.file_upload, id='file_upload', required=true).form-control
+				.form-group()
+					label.required Upload Image
+					input(type='file', name='file', value=formData.file_upload, id='file_upload', required=true).form-control
 				//- Eamil
 				.form-group(class=validationErrors.email ? 'has-error' : null)
 					label.required Email

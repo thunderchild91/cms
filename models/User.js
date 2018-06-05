@@ -4,7 +4,6 @@ var Types = keystone.Field.Types;
  * User Model
  * ==========
  */
-
 var User = new keystone.List('User');
 
 User.add({
@@ -128,6 +127,7 @@ User.add({
 	stuffies: { type: Types.Textarea, initial: true },
 	pacifiers: { type: Types.Textarea, initial: true },
 	message: { type: Types.Textarea, initial: true },
+	image: { type: Types.Text, initial: true }
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

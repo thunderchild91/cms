@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 var Enquiry = keystone.list('Enquiry');
 var Useer = keystone.list('User');
+var fs = require('fs');
 
 exports = module.exports = function (req, res) {
 
@@ -24,31 +25,40 @@ exports = module.exports = function (req, res) {
 	locals.Rstatus = Useer.fields.Rstatus.ops;
 	locals.timeZone = Useer.fields.timeZone.ops;
 
-	
+
 	locals.yourType = [
-		{value: 'Incontinence User', label: 'Incontinence User'},
-		{value: 'Adult Baby', label: 'Adult Baby'},
-		{value: 'BabyFur', label: 'BabyFur'},
-		{value: 'DiaperFur', label: 'DiaperFur'},
-		{value: 'Diaper Lover', label: 'Diaper Lover'},
-		{value: 'Mommy', label: 'Mommy'},
-		{value: 'Daddy', label: 'Daddy'},
-		{value: 'Domme', label: 'Domme'},
-		{value: 'Babysitter', label: 'Babysitter'},
-		{value: 'Little', label: 'Little'},
-		{value: 'Sissy', label: 'Sissy'},
+		{ value: 'Incontinence User', label: 'Incontinence User' },
+		{ value: 'Adult Baby', label: 'Adult Baby' },
+		{ value: 'BabyFur', label: 'BabyFur' },
+		{ value: 'DiaperFur', label: 'DiaperFur' },
+		{ value: 'Diaper Lover', label: 'Diaper Lover' },
+		{ value: 'Mommy', label: 'Mommy' },
+		{ value: 'Daddy', label: 'Daddy' },
+		{ value: 'Domme', label: 'Domme' },
+		{ value: 'Babysitter', label: 'Babysitter' },
+		{ value: 'Little', label: 'Little' },
+		{ value: 'Sissy', label: 'Sissy' },
 	];
-	
+
 	locals.errorMsg = [];
 	view.on('post', { action: 'register' }, function (next) {
 		var User = keystone.list('User').model;
-		// var userName = {first: locals.formData.name, last: ''};
-		// User.find({name: userName}, function (err, item) {
-		// 	console.log("item", item);
-		// 	console.log("err", err);
-		// });
+		var imageName = "username_" + locals.formData.name + '.' + req.files.file.extension;
+		fs.readFile(req.files.file.path, function(err, data) {
+			if(err) {
+				return console.log(err);
+			}
+			fs.writeFile(__dirname + '../../../public/uploads/files/' + imageName , data, function(err) {
+				if(err) {
+					return console.log(err);
+				}
+				console.log("The file was saved!");
+			});
+		  });
+		 
+		
 		var user = new User({
-            name: {
+		    name: {
 				first: locals.formData.name,
 				last: ''
 			},
@@ -72,6 +82,7 @@ exports = module.exports = function (req, res) {
 			stuffies: locals.formData.stuffies,
 			pacifiers: locals.formData.pacifiers,
 			message: locals.formData.message,
+			image: imageName,
 			isAdmin: false
 		});
 		user.save(function (err) {
@@ -89,7 +100,7 @@ exports = module.exports = function (req, res) {
 				res.redirect('/keystone/signin');
 			}
 		});
-       
+
 	});
 
 	view.render('register');
