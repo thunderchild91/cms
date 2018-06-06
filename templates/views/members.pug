@@ -8,7 +8,7 @@ block intro
 mixin printUser(post)
 	if post.name.last!== undefined
 		if post.image !== undefined
-			td: img(src="/uploads/files/" + user.image, alt="User Image", style="width: 45px;")
+			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
 			td
 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
 		else
@@ -17,7 +17,7 @@ mixin printUser(post)
 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
 	else
 		if post.image !== undefined
-			td: img(src="/uploads/files/" + user.image, alt="User Image", style="width: 45px;")
+			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
 			td
 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
 		else

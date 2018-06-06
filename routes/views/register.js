@@ -54,7 +54,7 @@ exports = module.exports = function (req, res) {
 				}
 				console.log("The file was saved!");
 			});
-		  });
+		});
 		 
 		
 		var user = new User({

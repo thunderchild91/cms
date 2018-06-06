@@ -14,13 +14,24 @@ block content
 				h3.contactFormHeader Profile Updated.
 			else
 				.row: .col-sm-8.col-md-offset-3.col-md-6
-					img.center(src="/uploads/files/" + user.image, alt="User Image", style="max-height: 300px; padding-bottom: 20px; border-radius: 0px !important")
-					form.post(method='post')
+					div.imageDiv
+						if user.image !== undefined
+							img.center(src="/uploads/files/" + user.image, alt="User Image", style="max-height: 300px; padding-bottom: 20px; border-radius: 0px !important")
+							//- button(type='button').btn.btn-cms.image-button Edit
+						else
+							img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="height: 150px; width: auto; padding-bottom: 20px; border-radius: 0px !important")
+							//- button(type='button',  data-toggle='modal', href='#mvrDisplayModal').btn.btn-cms.image-button Edit 
+							//- 	i.fa.fa-pencil(aria-hidden='true')
+					form.post(method='post',  enctype='multipart/form-data')
 						input(type='hidden', name='action', value='update')
 						//- Username
 						.form-group()
 							label Username
 							input(type='text', name='name', value=user.name.first, required=true, disabled).form-control
+						//- File Upload
+						.form-group()
+							label Upload Image
+							input(type='file', name='file', value=formData.file_upload, id='file_upload').form-control
 						//- Username
 						.form-group()
 							label Email
@@ -134,4 +145,19 @@ block content
 						.form-actions
 							button(type='submit').btn.btn-cms Update
 		else
-			h2.sepratePostHeader You Need to Login First.		
+			h2.sepratePostHeader You Need to Login First.
+		#mvrDisplayModal.modal.fade
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+						h4.modal-title Title
+					.modal-body
+						form.post(method='post',  enctype='multipart/form-data')
+							input(type='hidden', name='action', value='updateProfile')
+							.form-group()
+								label.required Upload Image
+								input(type='file', name='file', value=formData.file_upload, id='file_upload', required=true).form-control
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
+						button.btn.btn-primary(type='submit') Save changes
