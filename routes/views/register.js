@@ -48,7 +48,7 @@ exports = module.exports = function (req, res) {
 			if(err) {
 				return console.log(err);
 			}
-			fs.writeFile(__dirname + '../../../public/uploads/files/' + imageName , data, function(err) {
+			fs.writeFile(__dirname + '/../../../public/uploads/files/' + imageName , data, function(err) {
 				if(err) {
 					return console.log(err);
 				}
