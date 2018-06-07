@@ -17,11 +17,8 @@ block content
 					div.imageDiv
 						if user.image !== undefined
 							img.center(src="/uploads/files/" + user.image, alt="User Image", style="max-height: 300px; padding-bottom: 20px; border-radius: 0px !important")
-							//- button(type='button').btn.btn-cms.image-button Edit
 						else
 							img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="height: 150px; width: auto; padding-bottom: 20px; border-radius: 0px !important")
-							//- button(type='button',  data-toggle='modal', href='#mvrDisplayModal').btn.btn-cms.image-button Edit 
-							//- 	i.fa.fa-pencil(aria-hidden='true')
 					form.post(method='post',  enctype='multipart/form-data')
 						input(type='hidden', name='action', value='update')
 						//- Username

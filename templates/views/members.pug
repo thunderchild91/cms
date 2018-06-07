@@ -3,43 +3,109 @@ extends ../layouts/default
 block intro
 	.container-fluid.nopadding: .section.section-background-image
 		img.siteBanner(src="/images/banner-incont.jpg", alt="Please Refresh")
-	//- .container-fluid.nopadding
-
-mixin printUser(post)
-	if post.name.last!== undefined
-		if post.image !== undefined
-			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
-			td
-				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
-		else
-			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
-			td
-				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
-	else
-		if post.image !== undefined
-			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
-			td
-				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
-		else
-			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
-			td
-				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
-	//- td= post.email
-
+	.container
+		h1.sepratePostHeader ABDL Members
 
 block content
-	.container: .row
-		.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2 
-			if user
-				h2.sepratePostHeader Members
-				table.table.table-bordered.post.tableStyle
-					thead
-						tr
-							th(style="width: 65px") 
-							th Name
-					tbody
-					each post in data.posts
-						tr
-						+printUser(post)
-			else
-				h2.sepratePostHeader You Need to Login First.
+	.container.gallery-container-section
+		if users.length
+			.row.gallery-images
+				each user in users
+					if user.image !== undefined
+						.col-sm-3.col-md-3.gallery-image
+							div.card.imageBackground
+								div.image-holder
+									img.center(src="/uploads/files/" + user.image, alt="User Image")
+								div.card-container
+									hr
+									if user.name.last !== undefined
+										h4: a(href='/blog/singleuser/' + user._id, style="font-weight:bold")=user.name.first +' '+user.name.last
+									else
+										h4: a(href='/blog/singleuser/' + user._id, style="font-weight:bold")=user.name.first
+					else	
+						.col-sm-3.col-md-3.gallery-image
+							div.card.imageBackground
+								div.image-holder
+									img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image")
+								div.card-container
+									hr
+									if user.name.last !== undefined
+										h4: a(href='/blog/singleuser/' + user._id, style="font-weight:bold")=user.name.first +' '+user.name.last
+									else
+										h4: a(href='/blog/singleuser/' + user._id, style="font-weight:bold")=user.name.first
+								
+
+					//- 	.col-sm-3.col-md-3.gallery-image
+					//- 		h3.galleryImageHeader= user.name.first 
+					//- 		div.imageBackground.center
+					//- 			img(src="/uploads/files/" + user.image, alt="User Image").img-rounded
+					//- else
+					//- 	.col-sm-3.col-md-3.gallery-image
+					//- 		h3.galleryImageHeader= user.name.first 
+					//- 		div.imageBackground.center
+					//- 			img(src="/uploads/files/default-user-kenna-site.png", alt="User Image").img-rounded
+				//- h2.galleryImageHeader= user.name
+				//- p= user
+					//- if gallery.publishedDate
+					//- 	.pull-right.text-muted= gallery._.publishedDate.format('Do MMM YYYY')
+				
+				
+
+					//- if gallery.heroImage.exists
+					//- 	.col-sm-4.col-md-4.gallery-image: img(src=gallery._.heroImage.limit(680,680)).img-rounded
+					//- 	.col-sm-8.col-md-8: .row
+					//- 		each image in gallery.images
+					//- 			.col-xs-4.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+					//- else
+					//- 	each image in gallery.images
+					//- 		.col-xs-6.col-sm-4.col-md-3.gallery-image: div.imageBackground: img(src=image.limit(300,300)).img-rounded
+		else
+			h3.pageShowing.text-muted There are no image galleries yet.
+	//- .container-fluid.nopadding
+
+
+
+
+
+
+
+//- mixin printUser(post)
+//- 	if post.name.last!== undefined
+//- 		if post.image !== undefined
+//- 			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
+//- 			td
+//- 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
+//- 		else
+//- 			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
+//- 			td
+//- 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first +' '+post.name.last
+//- 	else
+//- 		if post.image !== undefined
+//- 			td: img(src="/uploads/files/" + post.image, alt="User Image", style="width: 45px;")
+//- 			td
+//- 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
+//- 		else
+//- 			td: img(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="width: 45px;")
+//- 			td
+//- 				a(href='/blog/singleuser/' + post._id, style="font-weight:bold")=post.name.first
+
+
+//- block content
+//- 	.container: .row
+//- 		.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2 
+//- 			if user
+//- 				h2.sepratePostHeader Members
+//- 				//- table.table.table-bordered.post.tableStyle
+//- 				//- 	thead
+//- 				//- 		tr
+//- 				//- 			th(style="width: 65px") 
+//- 				//- 			th Name
+//- 				//- 	tbody
+//- 				//- 	each post in data.posts
+//- 				//- 		tr
+//- 				//- 		+printUser(post)
+//- 			else
+//- 				h2.sepratePostHeader You Need to Login First.
+
+
+
