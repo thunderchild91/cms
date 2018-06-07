@@ -57,7 +57,8 @@ exports = module.exports = function (req, res) {
 				var error = err.error === 'database error' ? err.detail : err;
 			}
 			else {
-				if (req.files) {
+				if (Object.keys(req.files).length > 0) {
+					console.log(req.files);
 					var imageName = "username_" + req.user.name.first  + '.' + req.files.file.extension;
 					fs.readFile(req.files.file.path, function(err, data) {
 						if(err) {
