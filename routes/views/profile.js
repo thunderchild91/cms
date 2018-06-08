@@ -35,6 +35,7 @@ exports = module.exports = function (req, res) {
 	locals.enquirySubmitted = false;
 
 	User = keystone.list('User');
+
 	view.on('post', { action: 'update' }, function (next) {
 		// User.model.findById(req.user._id, function (err, item) {
 
@@ -51,6 +52,7 @@ exports = module.exports = function (req, res) {
 		if (req.body.password == "") {
 			req.body.password = req.user.password;
 		}
+		
 		User.model.update({ _id: req.user._id }, req.body, {}, function (err) {
 			if (err) {
 				var status = err.error === 'validation errors' ? 400 : 500;
@@ -58,21 +60,33 @@ exports = module.exports = function (req, res) {
 			}
 			else {
 				if (Object.keys(req.files).length > 0) {
+					if (req.body.image == undefined || req.body.image == "") {
+						req.body.image = "username_" + req.user.name.first + '.' + req.files.file.extension;
+						User.model.update({ _id: req.user._id }, req.body, {}, function (err) {
+							if (err) {
+								var status = err.error === 'validation errors' ? 400 : 500;
+								var error = err.error === 'database error' ? err.detail : err;
+							}
+							else {
+								console.log("Image name updated")
+							}
+						})
+					}
 					console.log(req.files);
-					var imageName = "username_" + req.user.name.first  + '.' + req.files.file.extension;
-					fs.readFile(req.files.file.path, function(err, data) {
-						if(err) {
+					var imageName = "username_" + req.user.name.first + '.' + req.files.file.extension;
+					fs.readFile(req.files.file.path, function (err, data) {
+						if (err) {
 							return console.log(err);
 						}
-						fs.writeFile(__dirname + '/../../public/uploads/files/' + imageName , data, function(err) {
-							if(err) {
+						fs.writeFile(__dirname + '/../../public/uploads/files/' + imageName, data, function (err) {
+							if (err) {
 								return console.log(err);
 							}
 							console.log("The file was saved!");
 						});
 					});
 				}
-				
+
 				res.redirect('/profile');
 			}
 		});
