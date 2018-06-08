@@ -26,28 +26,27 @@ exports = module.exports = function (req, res) {
 	// 		});
 	// });
 
-	// locals.data = {
-	// 	users: []
-	// };
-	// view.on('init', function (next) {
-	// 	var q = keystone.list('User').paginate({
-	// 		page: req.query.page || 1,
-	// 		perPage: 10,
-	// 		maxPages: 10,
+	locals.data = {
+		users: []
+	};
+	view.on('init', function (next) {
+		var q = keystone.list('User').paginate({
+			page: req.query.page || 1,
+			perPage: 25,
+			maxPages: 10,
 			
-	// 	})
-	// 		.sort('sortOrder')
+		})
+			.sort('sortOrder')
 			
 
-	// 	q.exec(function (err, results) {
-	// 		// console.log(results);
-	// 		locals.data.users = results;
-	// 		next(err);
-	// 	});
-	// });
+		q.exec(function (err, results) {
+			locals.data.users = results;
+			next(err);
+		});
+	});
 
 
-	view.query('users', keystone.list('User').model.find().sort('sortOrder'));
+	// view.query('users', keystone.list('User').model.find().sort('sortOrder'));
 
 	view.render('members');
 };
