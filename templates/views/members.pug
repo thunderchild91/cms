@@ -45,6 +45,15 @@ block content
 						|  users.
 				else
 					h4.text-weight-normal Showing #{utils.plural(data.users.results.length, '* user')}.
+				.row
+					.col-md-offset-9.col-md-3
+						form(method='post')
+							.form-group(style="display:inline-block;float:left;")
+								input(type='hidden', name='action', value='searchUser')
+								input(type='text', name='search', placeholder="Search...", required=true).form-control
+							.form-actions(style="display:inline-block;")
+								button(type='submit' style="padding:10px;").btn.btn-cms 
+									i.fa.fa-search
 				.blog
 					.row.gallery-images
 						each user in data.users.results

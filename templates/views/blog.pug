@@ -5,7 +5,7 @@ block intro
 		img.siteBanner(src="/images/banner-incont.jpg", alt="Please Refresh")
 
 mixin post(post)
-	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
+	.post.post-with-image(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		h2: a(href='/blog/post/' + post.slug)= post.title
 		p.lead.text-muted Posted 
 			if post.publishedDate

@@ -10,21 +10,6 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'members';
-	// locals.data = {
-	// 	posts: [],
-	// };
-	// // locals.posts = [];
-    // User = keystone.list('User');
-	// view.on('init', function (next) {
-	// 	User.model.find()
-	// 		.sort('_id')
-	// 		.exec(function(err, posts) {
-	// 			// do something with posts
-	// 			locals.data.posts = posts;
-	// 			// locals.data.posts.push(posts);
-	// 			next(err);
-	// 		});
-	// });
 
 	locals.data = {
 		users: []
@@ -32,7 +17,7 @@ exports = module.exports = function (req, res) {
 	view.on('init', function (next) {
 		var q = keystone.list('User').paginate({
 			page: req.query.page || 1,
-			perPage: 25,
+			perPage: 20,
 			maxPages: 10,
 			
 		})
@@ -45,8 +30,22 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
+	view.on('post', { action: 'searchUser' }, function (next) {
+		
+		if (req.body.search !== "" && req.body.search !== undefined) {
+			var q = keystone.list('User').model.findOne({
+				"name.first": req.body.search,
+			});
+	
+			q.exec(function (err, result) {
+				if (result !== null && result !== undefined)
+					res.redirect('blog/singleuser/'+result._id);
+				req.flash('error', 'Member does not exsist. Please search for register members');
+				next(err);
+			});
+		}
+	});
 
-	// view.query('users', keystone.list('User').model.find().sort('sortOrder'));
 
 	view.render('members');
 };
