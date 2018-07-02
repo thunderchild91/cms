@@ -62,9 +62,17 @@ html
 										li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 								else							
 									li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-							//- li(class="dropdown") 
-							//- 	a(href="javascript:;") Other    
-							//- 		i.fa.fa-caret-down
+						ul.nav.navbar-nav.navbar-left
+							li
+								div.dropdown 
+									a(type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:18px;padding-top:15px;padding-bottom:15px;margin:2px;").btn.btn-secondary.dropdown-toggleDropdown Others 
+										i.fa.fa-caret-down
+									div(aria-labelledby="dropdownMenuButton" style="background:#7653BD;min-width: 190px;").dropdown-menu
+										ul(style="display:block;padding-left:10px;list-style: none;")
+											li(style="font-size:18px;"): a(href="/whatIsABDL" style="display:block").dropdown-item What is ABDL
+											li(style="font-size:18px;"): a(href="/rules" style="display:block").dropdown-item Rules
+											li(style="font-size:18px;"): a(href="/links" style="display:block").dropdown-item Links 
+											li(style="font-size:18px;"): a(href="/about" style="display:block").dropdown-item About 
 						ul.nav.navbar-nav.navbar-right
 							if user
 								if user.canAccessKeystone

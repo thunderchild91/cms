@@ -11,7 +11,7 @@ block content
 				h2.sepratePostHeader Invalid User.
 			else
 				div.imageDiv
-					if data.post.image !== undefined
+					if data.post.image !== undefined && data.post.image !== ""
 						img.center(src="/uploads/files/" + data.post.image, alt="User Image", style="max-height: 300px; padding-bottom: 20px; border-radius: 0px !important")
 					else
 						img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image", style="height: 150px; width: auto; padding-bottom: 20px; border-radius: 0px !important")
@@ -79,7 +79,7 @@ block content
 					if data.post.pacifiers
 						.form-group()
 							label Favorite Pacifiers:
-							|	#{data.post.Rstatus}
+							|	#{data.post.pacifiers}
 					if data.post.message
 						.form-group()
 							label About Me:

@@ -44,10 +44,10 @@ exports = module.exports = function (app) {
 	app.all('/register', routes.views.register);
 	app.all('/members', routes.views.members);
 	app.all('/profile', routes.views.profile);
-	// app.get('/whatIsABDL', routes.views.whatIsABDL);
-	// app.get('/rules', routes.views.rules);
-	// app.get('/links', routes.views.links);
-	// app.get('/about', routes.views.about);
+	app.get('/whatIsABDL', routes.views.whatIsABDL);
+	app.get('/rules', routes.views.rules);
+	app.get('/links', routes.views.links);
+	app.get('/about', routes.views.about);
 
 	//File Upload Route
 	app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

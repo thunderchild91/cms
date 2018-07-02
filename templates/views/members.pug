@@ -7,11 +7,11 @@ block intro
 		h1.sepratePostHeader ABDL Members
 
 mixin user(user)
-	if user.image !== undefined
+	if user.image !== undefined && user.image !== ""
 		.col-sm-3.col-md-3.gallery-image
 			div.card.imageBackground
 				div.image-holder
-					img.center(src="/uploads/files/" + user.image, alt="User Image")
+					img.center(src="/uploads/files/" + user.image, alt="User Image", style="vertical-align: middle;width: 120px;height: 125px;border-radius: 50%;")
 				div.card-container
 					hr
 					if user.name.last !== undefined
