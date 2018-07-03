@@ -11,7 +11,7 @@ mixin user(user)
 		.col-sm-3.col-md-3.gallery-image
 			div.card.imageBackground
 				div.image-holder
-					img.center(src="/uploads/files/" + user.image, alt="User Image", style="vertical-align: middle;width: 120px;height: 125px;border-radius: 50%;")
+					a(href='/blog/singleuser/' + user._id): img.center(src="/uploads/files/" + user.image, alt="User Image", style="vertical-align: middle;width: 120px;height: 125px;border-radius: 50%;")
 				div.card-container
 					hr
 					if user.name.last !== undefined
@@ -22,7 +22,7 @@ mixin user(user)
 		.col-sm-3.col-md-3.gallery-image
 			div.card.imageBackground
 				div.image-holder
-					img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image")
+					a(href='/blog/singleuser/' + user._id): img.center(src="/uploads/files/default-user-kenna-site.png", alt="User Image")
 				div.card-container
 					hr
 					if user.name.last !== undefined
